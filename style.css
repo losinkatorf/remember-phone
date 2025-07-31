@@ -6,12 +6,17 @@ body.dark-theme {
 .dark-theme .list-group-item {
     background-color: #333;
     border-color: #444;
+    color: #fff;
 }
 
 .dark-theme .form-control {
     background-color: #444;
-    color: #eee;
+    color: #fff;
     border-color: #555;
+}
+
+.dark-theme .form-control::placeholder {
+    color: #aaa;
 }
 
 .dark-theme .btn-primary {
