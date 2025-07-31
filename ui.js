@@ -33,11 +33,11 @@ const ui = {
     renderStats: () => {
         const statsList = document.getElementById('stats-list');
         statsList.innerHTML = '';
-        const stats = data.getStats().sort((a, b) => new Date(b.date) - new Date(a.date));
+        const stats = data.getStats().filter(stat => stat.percentage !== undefined).sort((a, b) => new Date(b.date) - new Date(a.date));
         stats.forEach(stat => {
             const li = document.createElement('li');
             li.className = 'list-group-item';
-            li.textContent = `${new Date(stat.date).toLocaleString()}: ${stat.description} - ${stat.correct ? 'Correct' : 'Incorrect'}`;
+            li.textContent = `${new Date(stat.date).toLocaleString()}: ${stat.correctCount} / ${stat.totalCount} correct (${stat.percentage.toFixed(2)}%)`;
             statsList.appendChild(li);
         });
     },
@@ -46,6 +46,14 @@ const ui = {
         resultDiv.innerHTML = `
             <p>Result: ${result.resultHtml}</p>
             <p>Correctness: ${result.correctPercentage.toFixed(2)}%</p>
+        `;
+    },
+    showFinalTestResults: (correct, total, percentage) => {
+        const resultDiv = document.getElementById('test-result');
+        resultDiv.innerHTML = `
+            <h3>Test Complete!</h3>
+            <p>You got ${correct} out of ${total} correct.</p>
+            <p>Overall Correctness: ${percentage.toFixed(2)}%</p>
         `;
     },
     showScreen: (screenId) => {

@@ -26,9 +26,9 @@ const data = {
     saveStats: (stats) => {
         localStorage.setItem('stats', JSON.stringify(stats));
     },
-    addStat: (stat) => {
+    addStat: (correctCount, totalCount, percentage) => {
         const stats = data.getStats();
-        stats.push({ date: new Date().toISOString(), ...stat });
+        stats.push({ date: new Date().toISOString(), correctCount, totalCount, percentage });
         data.saveStats(stats);
     },
     exportData: () => {
