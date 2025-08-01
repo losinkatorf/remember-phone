@@ -42,14 +42,14 @@ const ui = {
         });
     },
     showTestResult: (result) => {
-        const resultDiv = document.getElementById('test-result');
+        const resultDiv = document.getElementById('test-status');
         resultDiv.innerHTML = `
             <p>Result: ${result.resultHtml}</p>
             <p>Correctness: ${result.correctPercentage.toFixed(2)}%</p>
         `;
     },
     showFinalTestResults: (correct, total, percentage) => {
-        const resultDiv = document.getElementById('test-result');
+        const resultDiv = document.getElementById('test-status');
         resultDiv.innerHTML = `
             <h3>Test Complete!</h3>
             <p>You got ${correct} out of ${total} correct.</p>
@@ -61,5 +61,17 @@ const ui = {
             document.getElementById(id).classList.add('d-none');
         });
         document.getElementById(screenId).classList.remove('d-none');
+
+        ['show-main-screen', 'show-test-screen', 'show-stats-screen'].forEach(id => {
+            document.getElementById(id).classList.remove('btn-primary');
+            document.getElementById(id).classList.add('btn-info');
+        });
+
+        document.getElementById(`show-${screenId}`).classList.remove('btn-info');
+        document.getElementById(`show-${screenId}`).classList.add('btn-primary');
+
+        if (screenId !== 'test-screen') {
+            document.getElementById('test-status').innerHTML = '';
+        }
     },
 };

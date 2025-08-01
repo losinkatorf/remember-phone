@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         logic.startTest();
     });
     document.getElementById('show-stats-screen').addEventListener('click', () => ui.showScreen('stats-screen'));
+
+    ui.showScreen('main-screen');
 });
 
 let testSession = {
