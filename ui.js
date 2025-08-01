@@ -74,10 +74,29 @@ const ui = {
         `;
     },
     showScreen: (screenId) => {
-        ['main-screen', 'test-screen', 'stats-screen'].forEach(id => {
-            document.getElementById(id).classList.add('d-none');
-        });
-        document.getElementById(screenId).classList.remove('d-none');
+        const screens = ['main-screen', 'test-screen', 'stats-screen'];
+        const currentScreen = screens.find(id => !document.getElementById(id).classList.contains('d-none'));
+
+        if (currentScreen && currentScreen !== screenId) {
+            const currentScreenElement = document.getElementById(currentScreen);
+            currentScreenElement.classList.add('fade-out');
+
+            setTimeout(() => {
+                currentScreenElement.classList.add('d-none');
+                currentScreenElement.classList.remove('fade-out');
+
+                const newScreenElement = document.getElementById(screenId);
+                newScreenElement.classList.remove('d-none');
+                newScreenElement.classList.add('fade-in');
+
+                setTimeout(() => {
+                    newScreenElement.classList.remove('fade-in');
+                }, 300);
+            }, 300);
+        } else if (!currentScreen) {
+            const newScreenElement = document.getElementById(screenId);
+            newScreenElement.classList.remove('d-none');
+        }
 
         ['show-main-screen', 'show-test-screen', 'show-stats-screen'].forEach(id => {
             document.getElementById(id).classList.remove('btn-primary');
