@@ -44,6 +44,26 @@ body.dark-theme {
     border-color: #17a2b8;
 }
 
+.dark-theme .table {
+    --bs-table-bg: #212529;
+    --bs-table-striped-bg: #2c3034;
+    --bs-table-border-color: #373b3e;
+    --bs-table-color: #fff;
+    --bs-table-striped-color: #fff;
+}
+
+.edit-btn,
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: black;
+}
+
+.dark-theme .edit-btn,
+.dark-theme .delete-btn {
+    color: white;
+}
+
 .wrong-digit {
     color: red;
     font-weight: bold;
