@@ -18,18 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('phone-form').reset();
     });
 
-    document.getElementById('check-button').addEventListener('click', () => {
-        const description = document.getElementById('test-description').textContent;
-        const phones = data.getPhones();
-        const phone = phones.find(p => p.description === description);
-        const userInput = document.getElementById('test-input').value;
-
-        if (phone) {
-            const result = logic.checkAnswer(userInput, phone.number);
-            ui.showTestResult(result);
-        }
-    });
-
     document.getElementById('export-button').addEventListener('click', () => {
         const json = data.exportData();
         const blob = new Blob([json], { type: 'application/json' });
@@ -100,7 +88,7 @@ const logic = {
         if (phones.length === 0) {
             document.getElementById('test-description').textContent = 'No phone numbers to test.';
             document.getElementById('test-input').value = '';
-            document.getElementById('test-result').innerHTML = '';
+            document.getElementById('test-status').innerHTML = '';
             document.getElementById('check-button').disabled = true;
             return;
         }
@@ -117,7 +105,7 @@ const logic = {
             const currentPhone = testSession.phones[testSession.currentIndex];
             document.getElementById('test-description').textContent = currentPhone.description;
             document.getElementById('test-input').value = '';
-            document.getElementById('test-result').innerHTML = '';
+            document.getElementById('test-status').innerHTML = '';
             document.getElementById('check-button').textContent = 'Check';
             document.getElementById('check-button').onclick = () => logic.checkCurrentAnswer();
         } else {
