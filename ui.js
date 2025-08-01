@@ -27,6 +27,14 @@ const ui = {
                 document.getElementById('phone-id').value = phone.id;
                 document.getElementById('phone-number').value = phone.number;
                 document.getElementById('phone-description').value = phone.description;
+
+                const phoneForm = document.getElementById('phone-form');
+                phoneForm.classList.add('flash-animation');
+                document.getElementById('phone-number').focus();
+
+                setTimeout(() => {
+                    phoneForm.classList.remove('flash-animation');
+                }, 500);
             });
 
             tr.querySelector('.delete-btn').addEventListener('click', () => {
