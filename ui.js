@@ -52,10 +52,15 @@ const ui = {
         statsList.innerHTML = '';
         const stats = data.getStats().filter(stat => stat.percentage !== undefined).sort((a, b) => new Date(b.date) - new Date(a.date));
         stats.forEach(stat => {
-            const li = document.createElement('li');
-            li.className = 'list-group-item';
-            li.textContent = `${new Date(stat.date).toLocaleString()}: ${stat.correctCount} / ${stat.totalCount} correct (${stat.percentage.toFixed(2)}%)`;
-            statsList.appendChild(li);
+            const tr = document.createElement('tr');
+            const percentage = stat.percentage;
+            const colorClass = ui.getPercentageColorClass(percentage);
+            tr.innerHTML = `
+                <td>${new Date(stat.date).toLocaleString()}</td>
+                <td>${stat.correctCount} / ${stat.totalCount}</td>
+                <td><span class="${colorClass}">${percentage.toFixed(2)}%</span></td>
+            `;
+            statsList.appendChild(tr);
         });
     },
     showTestResult: (result) => {
