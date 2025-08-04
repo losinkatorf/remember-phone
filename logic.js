@@ -74,7 +74,10 @@ const logic = {
         data.addStat(testSession.correctAnswers, totalPhones, percentage);
         ui.renderStats();
         ui.showFinalTestResults(testSession.correctAnswers, totalPhones, percentage);
-        document.getElementById('check-button').disabled = true;
+        const checkButton = document.getElementById('check-button');
+        checkButton.textContent = 'Restart Test';
+        checkButton.onclick = () => logic.startTest();
+        checkButton.disabled = false;
     },
 };
 
