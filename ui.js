@@ -89,6 +89,10 @@ const ui = {
                 newScreenElement.classList.remove('d-none');
                 newScreenElement.classList.add('fade-in');
 
+                if (screenId === 'test-screen') {
+                    document.getElementById('test-input').focus();
+                }
+
                 setTimeout(() => {
                     newScreenElement.classList.remove('fade-in');
                 }, 300);
