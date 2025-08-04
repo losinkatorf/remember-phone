@@ -60,18 +60,30 @@ const ui = {
     },
     showTestResult: (result) => {
         const resultDiv = document.getElementById('test-status');
+        const percentage = result.correctPercentage;
+        const colorClass = ui.getPercentageColorClass(percentage);
         resultDiv.innerHTML = `
             <p>Result: ${result.resultHtml}</p>
-            <p>Correctness: ${result.correctPercentage.toFixed(2)}%</p>
+            <p>Correctness: <span class="${colorClass}">${percentage.toFixed(2)}%</span></p>
         `;
     },
     showFinalTestResults: (correct, total, percentage) => {
         const resultDiv = document.getElementById('test-status');
+        const colorClass = ui.getPercentageColorClass(percentage);
         resultDiv.innerHTML = `
             <h3>Test Complete!</h3>
-            <p>You got ${correct} out of ${total} correct.</p>
-            <p>Overall Correctness: ${percentage.toFixed(2)}%</p>
+            <p>You got <span class="test-description">${correct}</span> out of <span class="test-description">${total}</span> correct.</p>
+            <p>Overall Correctness: <span class="${colorClass}">${percentage.toFixed(2)}%</span></p>
         `;
+    },
+    getPercentageColorClass: (percentage) => {
+        if (percentage <= 30) {
+            return 'wrong-digit';
+        }
+        if (percentage <= 70) {
+            return 'test-description';
+        }
+        return 'correct-digit';
     },
     showScreen: (screenId) => {
         const screens = ['main-screen', 'test-screen', 'stats-screen'];

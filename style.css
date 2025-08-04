@@ -107,6 +107,14 @@ body.dark-theme {
     color: green;
 }
 
+.dark-theme .test-description {
+    color: yellow;
+}
+
+body:not(.dark-theme) .test-description {
+    color: blue;
+}
+
 body {
     transition: background-color 0.3s, color 0.3s;
 }

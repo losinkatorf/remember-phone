@@ -53,8 +53,6 @@
             </div>
         </div>
 
-        <div id="test-status" class="text-center my-3"></div>
-
         <div id="main-screen">
             <h2>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
@@ -88,11 +86,12 @@
                     <path fill-rule="evenodd" d="M6.5 1.5a.5.5 0 0 0-1 0v3.188A2.5 2.5 0 0 0 4.5 7.07v1.06a.5.5 0 0 0 1 0V7.07a1.5 1.5 0 0 1 3 0v1.06a.5.5 0 0 0 1 0V7.07a2.5 2.5 0 0 0-1-2.312V1.5a.5.5 0 0 0-1 0zM8 0a1 1 0 0 0-1 1v3.88a3.5 3.5 0 0 1 2 0V1a1 1 0 0 0-1-1z"/>
                 </svg> Self Test
             </h2>
-            <p>Enter the phone number for: <strong id="test-description"></strong></p>
+            <p class="h3">Enter the phone number for: <strong id="test-description" class="test-description"></strong></p>
             <div class="input-group mb-3">
                 <input type="text" id="test-input" class="form-control">
                 <button id="check-button" class="btn btn-success">Check</button>
             </div>
+            <div id="test-status" class="my-3 h3"></div>
         </div>
 
         <div id="stats-screen" class="d-none">
