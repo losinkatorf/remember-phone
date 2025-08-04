@@ -94,6 +94,14 @@ const ui = {
         const screens = ['main-screen', 'test-screen', 'stats-screen'];
         const currentScreen = screens.find(id => !document.getElementById(id).classList.contains('d-none'));
 
+        const focusElement = () => {
+            if (screenId === 'main-screen') {
+                document.getElementById('phone-number').focus();
+            } else if (screenId === 'test-screen') {
+                document.getElementById('test-input').focus();
+            }
+        };
+
         if (currentScreen && currentScreen !== screenId) {
             const currentScreenElement = document.getElementById(currentScreen);
             currentScreenElement.classList.add('fade-out');
@@ -106,17 +114,14 @@ const ui = {
                 newScreenElement.classList.remove('d-none');
                 newScreenElement.classList.add('fade-in');
 
-                if (screenId === 'test-screen') {
-                    document.getElementById('test-input').focus();
-                }
+                focusElement();
 
                 setTimeout(() => {
                     newScreenElement.classList.remove('fade-in');
                 }, 300);
             }, 300);
-        } else if (!currentScreen) {
-            const newScreenElement = document.getElementById(screenId);
-            newScreenElement.classList.remove('d-none');
+        } else {
+            focusElement();
         }
 
         ['show-main-screen', 'show-test-screen', 'show-stats-screen'].forEach(id => {

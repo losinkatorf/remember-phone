@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ui.renderPhones();
         document.getElementById('phone-form').reset();
+        document.getElementById('phone-number').focus();
     });
 
     document.getElementById('test-input').addEventListener('keyup', (e) => {
