@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('phone-form').reset();
     });
 
+    document.getElementById('test-input').addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            document.getElementById('check-button').click();
+        }
+    });
+
     document.getElementById('export-button').addEventListener('click', () => {
         const json = data.exportData();
         const blob = new Blob([json], { type: 'application/json' });
