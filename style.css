@@ -6,12 +6,17 @@ body.dark-theme {
 .dark-theme .list-group-item {
     background-color: #333;
     border-color: #444;
+    color: #fff;
 }
 
 .dark-theme .form-control {
     background-color: #444;
-    color: #eee;
+    color: #fff;
     border-color: #555;
+}
+
+.dark-theme .form-control::placeholder {
+    color: #aaa;
 }
 
 .dark-theme .btn-primary {
@@ -39,6 +44,60 @@ body.dark-theme {
     border-color: #17a2b8;
 }
 
+.dark-theme .table {
+    --bs-table-bg: #212529;
+    --bs-table-striped-bg: #2c3034;
+    --bs-table-border-color: #373b3e;
+    --bs-table-color: #fff;
+    --bs-table-striped-color: #fff;
+}
+
+.edit-btn,
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: black;
+}
+
+.dark-theme .edit-btn,
+.dark-theme .delete-btn {
+    color: white;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-in {
+    animation: fade-in 0.3s forwards;
+}
+
+.fade-out {
+    animation: fade-out 0.3s forwards;
+}
+
+@keyframes flash {
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: rgba(0, 123, 255, 0.1);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.flash-animation {
+    animation: flash 0.5s;
+}
+
 .wrong-digit {
     color: red;
     font-weight: bold;
@@ -48,6 +107,14 @@ body.dark-theme {
     color: green;
 }
 
+.dark-theme .test-description {
+    color: yellow;
+}
+
+body:not(.dark-theme) .test-description {
+    color: blue;
+}
+
 body {
     transition: background-color 0.3s, color 0.3s;
 }
@@ -55,4 +122,8 @@ body {
 .form-check-input:checked {
     background-color: #007bff;
     border-color: #007bff;
+}
+
+.dark-theme .text-muted {
+    color: #aaa !important;
 }

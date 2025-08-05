@@ -1,0 +1,19 @@
+# Dependencies
+/node_modules/**
+
+# Testing
+/tests
+playwright.config.js
+
+# Build/config files
+package.json
+package-lock.json
+
+# IDE / Editor specific
+.gemini/
+
+# Documentation
+/docs
+implementation-plan.md
+
+
