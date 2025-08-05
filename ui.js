@@ -1,4 +1,50 @@
 const ui = {
+    currentLanguage: 'en', // Default language
+
+    setLanguage: (lang) => {
+        ui.currentLanguage = lang;
+        document.documentElement.lang = lang;
+        const elements = document.querySelectorAll('[data-translate]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+                    element.placeholder = translations[lang][key];
+                } else {
+                    element.textContent = translations[lang][key];
+                }
+            }
+        });
+        document.title = translations[lang].rememberTheNumber + ' - ' + translations[lang].appDescription.split('.')[0];
+        document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].appDescription);
+        document.querySelector('meta[name="keywords"]').setAttribute('content', translations[lang].keywords || '');
+        document.querySelector('meta[property="og:title"]').setAttribute('content', translations[lang].rememberTheNumber + ' - ' + translations[lang].appDescription.split('.')[0]);
+        document.querySelector('meta[property="og:description"]').setAttribute('content', translations[lang].appDescription);
+        document.querySelector('meta[property="twitter:title"]').setAttribute('content', translations[lang].rememberTheNumber + ' - ' + translations[lang].appDescription.split('.')[0]);
+        document.querySelector('meta[property="twitter:description"]').setAttribute('content', translations[lang].appDescription);
+
+        // Update specific elements that are not easily handled by data-translate
+        document.getElementById('phone-number').placeholder = translations[lang].phoneNumber;
+        document.getElementById('phone-description').placeholder = translations[lang].description;
+        document.getElementById('phone-form').querySelector('button[type="submit"]').textContent = translations[lang].addUpdate;
+        document.querySelector('#phone-list').previousElementSibling.querySelector('th:nth-child(1)').textContent = translations[lang].number;
+        document.querySelector('#phone-list').previousElementSibling.querySelector('th:nth-child(2)').textContent = translations[lang].description;
+        document.getElementById('enter-phone-number-for').textContent = translations[lang].enterPhoneNumberFor;
+        document.getElementById('check-button').textContent = translations[lang].check;
+        document.querySelector('#stats-screen h2').childNodes[1].nodeValue = translations[lang].statistics;
+        document.querySelector('#stats-list').previousElementSibling.querySelector('th:nth-child(1)').textContent = translations[lang].date;
+        document.querySelector('#stats-list').previousElementSibling.querySelector('th:nth-child(2)').textContent = translations[lang].correct;
+        document.querySelector('#stats-list').previousElementSibling.querySelector('th:nth-child(3)').textContent = translations[lang].percentage;
+        document.querySelector('footer p').textContent = translations[lang].appDescription;
+
+        // Update button texts
+
+        // Update test results based on current language
+        if (document.getElementById('test-status').innerHTML !== '') {
+            // Re-render test results if visible to apply new language
+            // This part needs to be handled by re-calling the display functions in logic.js
+        }
+    },
     renderPhones: () => {
         const phoneList = document.getElementById('phone-list');
         phoneList.innerHTML = '';
@@ -38,7 +84,7 @@ const ui = {
             });
 
             tr.querySelector('.delete-btn').addEventListener('click', () => {
-                if (confirm('Are you sure you want to delete this number?')) {
+                if (confirm(translations[ui.currentLanguage].areYouSureDelete)) {
                     data.deletePhone(phone.id);
                     ui.renderPhones();
                 }
@@ -68,17 +114,17 @@ const ui = {
         const percentage = result.correctPercentage;
         const colorClass = ui.getPercentageColorClass(percentage);
         resultDiv.innerHTML = `
-            <p>Result: ${result.resultHtml}</p>
-            <p>Correctness: <span class="${colorClass}">${percentage.toFixed(2)}%</span></p>
+            <p>${translations[ui.currentLanguage].result}: ${result.resultHtml}</p>
+            <p>${translations[ui.currentLanguage].correctness}: <span class="${colorClass}">${percentage.toFixed(2)}%</span></p>
         `;
     },
     showFinalTestResults: (correct, total, percentage) => {
         const resultDiv = document.getElementById('test-status');
         const colorClass = ui.getPercentageColorClass(percentage);
         resultDiv.innerHTML = `
-            <h3>Test Complete!</h3>
-            <p>You got <span class="test-description">${correct}</span> out of <span class="test-description">${total}</span> correct.</p>
-            <p>Overall Correctness: <span class="${colorClass}">${percentage.toFixed(2)}%</span></p>
+            <h3 class="test-description">${translations[ui.currentLanguage].testComplete}</h3>
+            <p>${translations[ui.currentLanguage].youGot} <span class="test-description">${correct}</span> ${translations[ui.currentLanguage].outOf} <span class="test-description">${total}</span> ${translations[ui.currentLanguage].correctLabel}</p>
+            <p>${translations[ui.currentLanguage].overallCorrectness}: <span class="${colorClass}">${percentage.toFixed(2)}%</span></p>
         `;
     },
     getPercentageColorClass: (percentage) => {

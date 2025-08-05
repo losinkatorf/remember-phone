@@ -1,87 +1,100 @@
-const logic = {
-    startTest: () => {
-        const phones = data.getPhones();
-        if (phones.length === 0) {
-            document.getElementById('test-description').textContent = 'No phone numbers to test.';
-            document.getElementById('test-input').value = '';
-            document.getElementById('test-status').innerHTML = '';
-            document.getElementById('check-button').disabled = true;
-            return;
-        }
-
-        testSession.phones = [...phones].sort(() => Math.random() - 0.5); // Shuffle phones
-        testSession.currentIndex = 0;
-        testSession.correctAnswers = 0;
-        document.getElementById('check-button').disabled = false;
-        logic.displayCurrentTest();
-    },
-
-    displayCurrentTest: () => {
-        if (testSession.currentIndex < testSession.phones.length) {
-            const currentPhone = testSession.phones[testSession.currentIndex];
-            document.getElementById('test-description').textContent = currentPhone.description;
-            document.getElementById('test-input').value = '';
-            document.getElementById('test-status').innerHTML = '';
-            document.getElementById('check-button').textContent = 'Check';
-            document.getElementById('check-button').onclick = () => logic.checkCurrentAnswer();
-        } else {
-            logic.endTest();
-        }
-    },
-
-    checkCurrentAnswer: () => {
-        const currentPhone = testSession.phones[testSession.currentIndex];
-        const userInput = document.getElementById('test-input').value;
-        const result = logic.checkAnswer(userInput, currentPhone.number);
-
-        ui.showTestResult(result);
-
-        if (result.correctPercentage === 100) {
-            testSession.correctAnswers++;
-        }
-
-        document.getElementById('check-button').textContent = 'Next';
-        document.getElementById('check-button').onclick = () => {
-            testSession.currentIndex++;
-            logic.displayCurrentTest();
-        };
-    },
-
-    checkAnswer: (userInput, correctNumber) => {
-        const cleanInput = userInput.replace(/\D/g, '');
-        const cleanCorrectNumber = correctNumber.replace(/\D/g, '');
-        let resultHtml = '';
-        let correctCount = 0;
-
-        for (let i = 0; i < cleanCorrectNumber.length; i++) {
-            if (i < cleanInput.length && cleanInput[i] === cleanCorrectNumber[i]) {
-                resultHtml += `<span class="correct-digit">${cleanCorrectNumber[i]}</span>`;
-                correctCount++;
-            } else {
-                resultHtml += `<span class="wrong-digit">${cleanCorrectNumber[i]}</span>`;
-            }
-        }
-
-        return {
-            resultHtml,
-            correctPercentage: (correctCount / cleanCorrectNumber.length) * 100,
-        };
-    },
-
-    endTest: () => {
-        const totalPhones = testSession.phones.length;
-        const percentage = (testSession.correctAnswers / totalPhones) * 100;
-        data.addStat(testSession.correctAnswers, totalPhones, percentage);
-        ui.renderStats();
-        ui.showFinalTestResults(testSession.correctAnswers, totalPhones, percentage);
-        const checkButton = document.getElementById('check-button');
-        checkButton.textContent = 'Restart Test';
-        checkButton.onclick = () => logic.startTest();
-        checkButton.disabled = false;
-    },
-};
-
 document.addEventListener('DOMContentLoaded', () => {
+    const logic = {
+        startTest: () => {
+            const phones = data.getPhones();
+            if (phones.length === 0) {
+                document.getElementById('test-description').textContent = translations[ui.currentLanguage].noPhoneNumbersToTest;
+                document.getElementById('test-input').value = '';
+                document.getElementById('test-status').innerHTML = '';
+                document.getElementById('check-button').disabled = true;
+                return;
+            }
+
+            testSession.phones = [...phones].sort(() => Math.random() - 0.5); // Shuffle phones
+            testSession.currentIndex = 0;
+            testSession.correctAnswers = 0;
+            document.getElementById('check-button').disabled = false;
+            logic.displayCurrentTest();
+        },
+
+        displayCurrentTest: () => {
+            if (testSession.currentIndex < testSession.phones.length) {
+                const currentPhone = testSession.phones[testSession.currentIndex];
+                document.getElementById('test-description').textContent = currentPhone.description;
+                document.getElementById('test-input').value = '';
+                document.getElementById('test-status').innerHTML = '';
+                document.getElementById('check-button').textContent = translations[ui.currentLanguage].check;
+                document.getElementById('check-button').onclick = () => logic.checkCurrentAnswer();
+            } else {
+                logic.endTest();
+            }
+        },
+
+        checkCurrentAnswer: () => {
+            const currentPhone = testSession.phones[testSession.currentIndex];
+            const userInput = document.getElementById('test-input').value;
+            const result = logic.checkAnswer(userInput, currentPhone.number);
+
+            ui.showTestResult(result);
+
+            if (result.correctPercentage === 100) {
+                testSession.correctAnswers++;
+            }
+
+            document.getElementById('check-button').textContent = translations[ui.currentLanguage].next;
+            document.getElementById('check-button').onclick = () => {
+                testSession.currentIndex++;
+                logic.displayCurrentTest();
+            };
+        },
+
+        checkAnswer: (userInput, correctNumber) => {
+            const cleanInput = userInput.replace(/\D/g, '');
+            const cleanCorrectNumber = correctNumber.replace(/\D/g, '');
+            let resultHtml = '';
+            let correctCount = 0;
+
+            for (let i = 0; i < cleanCorrectNumber.length; i++) {
+                if (i < cleanInput.length && cleanInput[i] === cleanCorrectNumber[i]) {
+                    resultHtml += `<span class="correct-digit">${cleanCorrectNumber[i]}</span>`;
+                    correctCount++;
+                } else {
+                    resultHtml += `<span class="wrong-digit">${cleanCorrectNumber[i]}</span>`;
+                }
+            }
+
+            return {
+                resultHtml,
+                correctPercentage: (correctCount / cleanCorrectNumber.length) * 100,
+            };
+        },
+
+        endTest: () => {
+            const totalPhones = testSession.phones.length;
+            const percentage = (testSession.correctAnswers / totalPhones) * 100;
+            data.addStat(testSession.correctAnswers, totalPhones, percentage);
+            ui.renderStats();
+            ui.showFinalTestResults(testSession.correctAnswers, totalPhones, percentage);
+            const checkButton = document.getElementById('check-button');
+            checkButton.textContent = translations[ui.currentLanguage].restartTest;
+            checkButton.onclick = () => logic.startTest();
+            checkButton.disabled = false;
+        },
+    };
+
+    let testSession = {
+        phones: [],
+        currentIndex: 0,
+        correctAnswers: 0,
+    };
+
+    // Set initial language
+    const savedLanguage = localStorage.getItem('language');
+    const browserLanguage = navigator.language.split('-')[0];
+    const initialLanguage = savedLanguage || (translations[browserLanguage] ? browserLanguage : 'en');
+    ui.setLanguage(initialLanguage);
+    document.getElementById('language-select').value = initialLanguage;
+
     ui.renderPhones();
     ui.renderStats();
 
@@ -131,13 +144,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.importData(event.target.result)) {
                     ui.renderPhones();
                     ui.renderStats();
-                    alert('Data imported successfully!');
+                    alert(translations[ui.currentLanguage].dataImportedSuccessfully);
                 } else {
-                    alert('Invalid data format!');
+                    alert(translations[ui.currentLanguage].invalidDataFormat);
                 }
             };
             reader.readAsText(file);
         }
+    });
+
+    document.getElementById('language-select').addEventListener('change', (e) => {
+        ui.setLanguage(e.target.value);
+        localStorage.setItem('language', e.target.value);
     });
 
     const themeSwitch = document.getElementById('theme-switch');
@@ -165,9 +183,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ui.showScreen('main-screen');
 });
-
-let testSession = {
-    phones: [],
-    currentIndex: 0,
-    correctAnswers: 0,
-};
