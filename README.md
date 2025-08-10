@@ -1,5 +1,7 @@
 # Phone Number Memorization Tool
 
+[Try it out!](https://losinkatorf.github.io/remember-phone/)
+
 This is an interactive web application designed to help users memorize phone numbers through self-testing. All data is stored locally in the user's browser for privacy.
 
 ## Features

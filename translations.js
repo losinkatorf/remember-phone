@@ -33,6 +33,7 @@ translations = {
         appDescription: 'This application helps you memorize phone numbers by testing your recall. All data is stored locally in your browser and is never sent to a server.',
         result: 'Result',
         correctness: 'Correctness',
+        githubRepo: 'GitHub Repository',
     },
     es: {
         rememberTheNumber: 'Recuerda el Número',
@@ -68,6 +69,7 @@ translations = {
         appDescription: 'Esta aplicación te ayuda a memorizar números de teléfono probando tu memoria. Todos los datos se almacenan localmente en tu navegador y nunca se envían a un servidor.',
         result: 'Resultado',
         correctness: 'Corrección',
+        githubRepo: 'Repositorio de GitHub',
     },
     de: {
         rememberTheNumber: 'Merken Sie sich die Nummer',
@@ -103,6 +105,7 @@ translations = {
         appDescription: 'Diese Anwendung hilft Ihnen, sich Telefonnummern zu merken, indem Sie Ihr Gedächtnis testen. Alle Daten werden lokal in Ihrem Browser gespeichert und niemals an einen Server gesendet.',
         result: 'Ergebnis',
         correctness: 'Richtigkeit',
+        githubRepo: 'GitHub-Repository',
     },
     fr: {
         rememberTheNumber: 'Mémoriser le Numéro',
@@ -138,6 +141,7 @@ translations = {
         appDescription: 'Cette application vous aide à mémoriser les numéros de téléphone en testant votre mémoire. Toutes les données sont stockées localement dans votre navigateur et ne sont jamais envoyées à un serveur.',
         result: 'Résultat',
         correctness: 'Exactitude',
+        githubRepo: 'Dépôt GitHub',
     },
     pt: {
         rememberTheNumber: 'Lembre-se do Número',
@@ -173,6 +177,7 @@ translations = {
         appDescription: 'Esta aplicação ajuda-o a memorizar números de telefone, testando a sua memória. Todos os dados são armazenados localmente no seu navegador e nunca são enviados para um servidor.',
         result: 'Resultado',
         correctness: 'Correção',
+        githubRepo: 'Repositório do GitHub',
     },
     uk: {
         rememberTheNumber: "Запам'ятайте номер",
@@ -208,6 +213,7 @@ translations = {
         appDescription: "Ця програма допоможе вам запам'ятати номери телефонів, перевіряючи вашу пам'ять. Усі дані зберігаються локально у вашому браузері та ніколи не надсилаються на сервер.",
         result: 'Результат',
         correctness: 'Правильність',
+        githubRepo: 'Репозиторій GitHub',
     },
     el: {
         rememberTheNumber: 'Θυμηθείτε τον Αριθμό',
@@ -243,6 +249,7 @@ translations = {
         appDescription: 'Αυτή η εφαρμογή σας βοηθά να απομνημονεύετε αριθμούς τηλεφώνου δοκιμάζοντας την ανάκλησή σας. Όλα τα δεδομένα αποθηκεύονται τοπικά στο πρόγραμμα περιήγησής σας και δεν αποστέλλονται ποτέ σε διακομιστή.',
         result: 'Αποτέλεσμα',
         correctness: 'Ορθότητα',
+        githubRepo: 'Αποθετήριο GitHub',
     },
     zh: {
         rememberTheNumber: '记住号码',
@@ -278,6 +285,7 @@ translations = {
         appDescription: '此应用程序通过测试您的记忆力来帮助您记住电话号码。所有数据都存储在您的浏览器本地，绝不会发送到服务器。',
         result: '结果',
         correctness: '正确性',
+        githubRepo: 'GitHub 存储库',
     },
     hi: {
         rememberTheNumber: 'नंबर याद रखें',
@@ -313,6 +321,7 @@ translations = {
         appDescription: 'यह एप्लिकेशन आपकी याददाश्त का परीक्षण करके आपको फ़ोन नंबर याद रखने में मदद करता है। सभी डेटा आपके ब्राउज़र में स्थानीय रूप से संग्रहीत होता है और कभी भी सर्वर पर नहीं भेजा जाता है।',
         result: 'परिणाम',
         correctness: 'शुद्धता',
+        githubRepo: 'GitHub रिपोजिटरी',
     },
     af: {
         rememberTheNumber: 'Onthou die Nommer',
@@ -348,5 +357,6 @@ translations = {
         appDescription: "Hierdie toepassing help jou om foonnommers te memoriseer deur jou herroeping te toets. Alle data word plaaslik in jou blaaier gestoor en word nooit na 'n bediener gestuur nie.",
         result: 'Resultaat',
         correctness: 'Korrektheid',
+        githubRepo: 'GitHub-bewaarplek',
     },
 };
