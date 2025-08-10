@@ -16,12 +16,30 @@ const ui = {
             }
         });
         document.title = translations[lang].rememberTheNumber + ' - ' + translations[lang].appDescription.split('.')[0];
-        document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].appDescription);
-        document.querySelector('meta[name="keywords"]').setAttribute('content', translations[lang].keywords || '');
-        document.querySelector('meta[property="og:title"]').setAttribute('content', translations[lang].rememberTheNumber + ' - ' + translations[lang].appDescription.split('.')[0]);
-        document.querySelector('meta[property="og:description"]').setAttribute('content', translations[lang].appDescription);
-        document.querySelector('meta[property="twitter:title"]').setAttribute('content', translations[lang].rememberTheNumber + ' - ' + translations[lang].appDescription.split('.')[0]);
-        document.querySelector('meta[property="twitter:description"]').setAttribute('content', translations[lang].appDescription);
+        const descriptionMeta = document.querySelector('meta[name="description"]');
+        if (descriptionMeta) {
+            descriptionMeta.setAttribute('content', translations[lang].appDescription);
+        }
+        const keywordsMeta = document.querySelector('meta[name="keywords"]');
+        if (keywordsMeta) {
+            keywordsMeta.setAttribute('content', translations[lang].keywords || '');
+        }
+        const ogTitleMeta = document.querySelector('meta[property="og:title"]');
+        if (ogTitleMeta) {
+            ogTitleMeta.setAttribute('content', translations[lang].rememberTheNumber + ' - ' + translations[lang].appDescription.split('.')[0]);
+        }
+        const ogDescriptionMeta = document.querySelector('meta[property="og:description"]');
+        if (ogDescriptionMeta) {
+            ogDescriptionMeta.setAttribute('content', translations[lang].appDescription);
+        }
+        const twitterTitleMeta = document.querySelector('meta[property="twitter:title"]');
+        if (twitterTitleMeta) {
+            twitterTitleMeta.setAttribute('content', translations[lang].rememberTheNumber + ' - ' + translations[lang].appDescription.split('.')[0]);
+        }
+        const twitterDescriptionMeta = document.querySelector('meta[property="twitter:description"]');
+        if (twitterDescriptionMeta) {
+            twitterDescriptionMeta.setAttribute('content', translations[lang].appDescription);
+        }
 
         // Update specific elements that are not easily handled by data-translate
         document.getElementById('phone-number').placeholder = translations[lang].phoneNumber;

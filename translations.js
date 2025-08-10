@@ -34,6 +34,7 @@ translations = {
         result: 'Result',
         correctness: 'Correctness',
         githubRepo: 'GitHub Repository',
+        keywords: 'phone number, memorization, memory, test, quiz, self-test, learning, education, github, open source',
     },
     es: {
         rememberTheNumber: 'Recuerda el Número',
@@ -70,6 +71,7 @@ translations = {
         result: 'Resultado',
         correctness: 'Corrección',
         githubRepo: 'Repositorio de GitHub',
+        keywords: 'número de teléfono, memorización, memoria, prueba, autoevaluación, aprendizaje, educación, github, código abierto',
     },
     de: {
         rememberTheNumber: 'Merken Sie sich die Nummer',
@@ -106,6 +108,7 @@ translations = {
         result: 'Ergebnis',
         correctness: 'Richtigkeit',
         githubRepo: 'GitHub-Repository',
+        keywords: 'Telefonnummer, Auswendiglernen, Gedächtnis, Test, Quiz, Selbsttest, Lernen, Bildung, Github, Open Source',
     },
     fr: {
         rememberTheNumber: 'Mémoriser le Numéro',
@@ -142,6 +145,7 @@ translations = {
         result: 'Résultat',
         correctness: 'Exactitude',
         githubRepo: 'Dépôt GitHub',
+        keywords: 'numéro de téléphone, mémorisation, mémoire, test, quiz, auto-test, apprentissage, éducation, github, open source',
     },
     pt: {
         rememberTheNumber: 'Lembre-se do Número',
@@ -178,6 +182,7 @@ translations = {
         result: 'Resultado',
         correctness: 'Correção',
         githubRepo: 'Repositório do GitHub',
+        keywords: 'número de telefone, memorização, memória, teste, questionário, auto-teste, aprendizagem, educação, github, código aberto',
     },
     uk: {
         rememberTheNumber: "Запам'ятайте номер",
@@ -214,6 +219,7 @@ translations = {
         result: 'Результат',
         correctness: 'Правильність',
         githubRepo: 'Репозиторій GitHub',
+        keywords: 'номер телефону, запам'ятовування, пам'ять, тест, вікторина, самоперевірка, навчання, освіта, github, відкритий код',
     },
     el: {
         rememberTheNumber: 'Θυμηθείτε τον Αριθμό',
@@ -250,6 +256,7 @@ translations = {
         result: 'Αποτέλεσμα',
         correctness: 'Ορθότητα',
         githubRepo: 'Αποθετήριο GitHub',
+        keywords: 'αριθμός τηλεφώνου, απομνημόνευση, μνήμη, τεστ, κουίζ, αυτο-δοκιμή, μάθηση, εκπαίδευση, github, ανοιχτός κώδικας',
     },
     zh: {
         rememberTheNumber: '记住号码',
@@ -286,6 +293,7 @@ translations = {
         result: '结果',
         correctness: '正确性',
         githubRepo: 'GitHub 存储库',
+        keywords: '电话号码, 记忆, 记忆, 测试, 测验, 自我测试, 学习, 教育, github, 开源',
     },
     hi: {
         rememberTheNumber: 'नंबर याद रखें',
@@ -322,6 +330,7 @@ translations = {
         result: 'परिणाम',
         correctness: 'शुद्धता',
         githubRepo: 'GitHub रिपोजिटरी',
+        keywords: 'फोन नंबर, याद रखना, मेमोरी, टेस्ट, क्विज, सेल्फ-टेस्ट, सीखना, शिक्षा, गिटहब, ओपन सोर्स',
     },
     af: {
         rememberTheNumber: 'Onthou die Nommer',
