@@ -367,5 +367,6 @@ translations = {
         result: 'Resultaat',
         correctness: 'Korrektheid',
         githubRepo: 'GitHub-bewaarplek',
+        keywords: 'telefoonnommer, memorisering, geheue, toets, vasvra, selftoets, leer, opvoeding, github, oopbron',
     },
 };
